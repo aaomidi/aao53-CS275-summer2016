@@ -16,3 +16,4 @@ Written scripts: /templates/load.js, /Labs/01/script.js
 
 /Labs/01/script.js controls the fibonacci's execution.
 The script puts a table inside the tableD div. It fills this table with the fibonacci sequence.
+load.js loads the navbar into all of the web pages, instead of copy-pasting code.
