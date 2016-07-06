@@ -16,16 +16,16 @@ function calculate() {
     }
 
     var tbl = tableD.appendChild(document.createElement("table"));
-    tbl.style.width = '20%';
+    tbl.style.width = '100px';
+    tbl.classList.add("table", "table-nonfluid");
     tbl.setAttribute('border', '1');
 
     setupTable(tbl, value);
 
-    var i = 0;
     var num1 = 1;
     var num2 = 1;
 
-    for (i = 2; i <= value; i++) {
+    for (var i = 2; i <= value; i++) {
         if (i + 1 <= value) {
             addRow(tbl);
         }

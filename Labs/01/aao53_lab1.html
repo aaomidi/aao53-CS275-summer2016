@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Amir Omidi's Lab 1</title>
-	<script type="text/javascript" src="script.js"></script>
+    <title>Amir Omidi's Lab 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script type="text/javascript" src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<p>In mathematics, the Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence: 1 1 2 3 5 8 13...</p>
-<img src="https://i.imgur.com/S3jMH5C.png" alt="Fibonacci Numbers">
-<br>
-Input: <input type="text" name="num" id="input">
-<button type="button" onclick="calculate();">Click Me!</button>
-<br>
-<div id="tableD"></div>
+<div class="container-fluid">
+    <h1>Fibonacci numbers!</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <p>In mathematics, the Fibonacci numbers are the numbers in the following integer sequence, called the
+                Fibonacci
+                sequence: 1 1 2 3 5 8 13...</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <img src="https://i.imgur.com/S3jMH5C.png" alt="Fibonacci Numbers">
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <br>
+        <p>Input: <input type="text" name="num" id="input"></p>
+        <button type="button" onclick="calculate();">Calculate</button>
+        <br>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="col-md-4" id="tableD"></div>
+</div>
+
 </body>
 </html>
