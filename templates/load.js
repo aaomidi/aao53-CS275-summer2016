@@ -9,7 +9,7 @@ var load = function (doc) {
 
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("GET", "https://aaomidi.github.io/aao53-CS275-summer2016/templates/navbar.html", true);
+    xmlhttp.open("GET", "/templates/navbar.html", true);
 
     xmlhttp.onreadystatechange = function () {
         if (this.readyState !== 4 || this.status !== 200) {
