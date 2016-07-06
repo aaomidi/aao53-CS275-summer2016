@@ -27,7 +27,7 @@ function calculate() {
 
     for (var i = 2; i <= value; i++) {
         if (i + 1 <= value) {
-            addRow(tbl);
+            addRow(tbl, 2);
         }
         var fib = num1 + num2;
         num1 = num2;
@@ -36,14 +36,18 @@ function calculate() {
         tbl.rows[i].cells[1].innerHTML = fib;
     }
 }
-
+/**
+ * Sets up the initial points of the table.
+ * @param tbl
+ * @param input
+ */
 function setupTable(tbl, input) {
     var size = 2;
     if (input > 1) {
         size = 3;
     }
     for (var i = 0; i < size; i++) {
-        addRow(tbl);
+        addRow(tbl, 2);
     }
     tbl.rows[0].cells[0].innerHTML = 'n';
     tbl.rows[0].cells[1].innerHTML = 'f(n)';
@@ -55,9 +59,13 @@ function setupTable(tbl, input) {
     }
 }
 
-
-function addRow(tbl) {
+/**
+ * Adds a row to the table with two cells.
+ * @param tbl
+ */
+function addRow(tbl, count) {
     var newRow = tbl.insertRow();
-    var newCell = newRow.insertCell();
-    var newCell = newRow.insertCell();
+    for (var i = 0; i < count; i++) {
+        newRow.insertCell();
+    }
 }

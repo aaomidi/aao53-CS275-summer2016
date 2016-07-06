@@ -3,3 +3,16 @@ https://bitbucket.org/aaomidi/aao53-cs275-summer2016
 Site for project: https://aaomidi.github.io/aao53-CS275-summer2016/
 
 Labs are included in /Labs/. https://aaomidi.github.io/aao53-CS275-summer2016/Labs/
+
+Lab 1 documentation:
+
+File location: /Labs/01/aao53_lab1.html
+
+Included styles: Bootstrap
+Included scripts: jQuery
+
+Written styles: /templates/style.css
+Written scripts: /templates/load.js, /Labs/01/script.js
+
+/Labs/01/script.js controls the fibonacci's execution.
+The script puts a table inside the tableD div. It fills this table with the fibonacci sequence.
