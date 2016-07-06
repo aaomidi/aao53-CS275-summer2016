@@ -34,3 +34,6 @@ $RECYCLE.BIN/
 !.gitattributes
 !.gitignore
 *~
+## Bower
+node_components/
+bower_components/
