@@ -61,7 +61,8 @@ function setupTable(tbl, input) {
 
 /**
  * Adds a row to the table with two cells.
- * @param tbl
+ * @param tbl The table obj
+ * @param count Number of rows.
  */
 function addRow(tbl, count) {
     var newRow = tbl.insertRow();
