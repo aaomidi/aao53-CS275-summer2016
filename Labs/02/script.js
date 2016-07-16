@@ -1,6 +1,6 @@
 var apiKey = "";
 function callAPI() {
-    jQuery.timeago().settings.allowFuture = true;
+    jQuery.timeago.settings.allowFuture = true;
 
     var element = document.getElementById("input");
     apiKey = element.value;
@@ -65,11 +65,23 @@ function addData(tbl, info, i) {
 
     var img = document.createElement("img");
     img.setAttribute('src', info.iconURL);
-    if (d == null) {
-        return;
-    }
-    var time = jQuery.timeago(iso8601, d);
-    tbl.rows[i].cells[0].innerHTML = time;
+
+    var time = docElem.createElement("time");
+    time.classList.add("mytime");
+    time.setAttribute('data-epoch', "" + info.epoch * 1000);
+    time.setAttribute('data-type', "fuz");
+    time.innerHTML = jQuery.timeago(d);
+    time.click(function () {
+        if (time.getAttribute('date-type') === "fuz") {
+            time.setAttribute('data-type', "exact");
+            time.innerHTML = new Date(time.getAttribute('data-epoch')).toLocaleString();
+        } else {
+            time.setAttribute('data-type', "fuz");
+            time.innerHTML = jQuery.timeago(new Date(time.getAttribute('data-epoch')));
+        }
+    });
+
+    tbl.rows[i].cells[0].innerHTML = time.outerHTML;
     tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
