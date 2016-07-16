@@ -89,7 +89,7 @@ function timeUpdate(elm) {
         elm.innerHTML = new Date(Number(elm.getAttribute('data-epoch'))).toLocaleString();
     } else {
         jelm.data('type', "fuz");
-        elm.innerHTML = jQuery.timeago(Number(new Date(elm.getAttribute('data-epoch'))));
+        elm.innerHTML = jQuery.timeago(new Date(Number(elm.getAttribute('data-epoch'))));
     }
 }
 /**
