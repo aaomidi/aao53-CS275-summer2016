@@ -66,10 +66,11 @@ function addData(tbl, info, i) {
     var img = document.createElement("img");
     img.setAttribute('src', info.iconURL);
 
-    var time = docElem.createElement("time");
+    var time = document.createElement("time");
     time.classList.add("mytime");
     time.setAttribute('data-epoch', "" + info.epoch * 1000);
-    time.setAttribute('data-type', "fuz");
+
+    time.data('data-type', "fuz");
     time.innerHTML = jQuery.timeago(d);
     time.setAttribute('onclick', "timeUpdate(this)");
     //time.addEventListener("click",timeUpdate);
@@ -78,12 +79,13 @@ function addData(tbl, info, i) {
     tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
+
 function timeUpdate(elm) {
-    if (elm.getAttribute('date-type') === "fuz") {
-        elm.setAttribute('data-type', "exact");
+    if (elm.data('date-type') === "fuz") {
+        elm.data('data-type', "exact");
         elm.innerHTML = new Date(elm.getAttribute('data-epoch')).toLocaleString();
     } else {
-        elm.setAttribute('data-type', "fuz");
+        elm.data('data-type', "fuz");
         elm.innerHTML = jQuery.timeago(new Date(elm.getAttribute('data-epoch')));
     }
 }
