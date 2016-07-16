@@ -82,11 +82,11 @@ function addData(tbl, info, i) {
 
 function timeUpdate(elm) {
     var jelm = $(elm);
-    if ($jelm.data('date-type') === "fuz") {
-        $jelm.data('data-type', "exact");
+    if (jelm.data('date-type') === "fuz") {
+        jelm.data('data-type', "exact");
         elm.innerHTML = new Date(elm.getAttribute('data-epoch')).toLocaleString();
     } else {
-        $jelm.data('data-type', "fuz");
+        jelm.data('data-type', "fuz");
         elm.innerHTML = jQuery.timeago(new Date(elm.getAttribute('data-epoch')));
     }
 }
