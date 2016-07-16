@@ -96,7 +96,7 @@ function addData(tbl, info, i) {
     var temp = document.createElement("span");
     temp.classList.add("mytemp");
     temp.setAttribute("data-tempC", info.tempCelsius);
-    temp.setAttribute("data-tempF", "" + ((Number(info.tempCelsius) * 1.8) + 32));
+    temp.setAttribute("data-tempF", "" + ((Number(info.tempCelsius) * 1.8) + 32).toFixed(2));
     temp.setAttribute('onclick', "tempUpdate(this)");
     temp.innerHTML = info.tempCelsius + " C";
     tbl.rows[i].cells[0].innerHTML = time.outerHTML;
