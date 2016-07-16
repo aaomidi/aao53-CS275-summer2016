@@ -3,7 +3,7 @@ function callAPI() {
     var element = document.getElementById("input");
     apiKey = element.value;
     apiKey = encodeURIComponent(apiKey);
-    var url = "http://api.wunderground.com/api/" + apiKey + "/geolookup/q/autoip.json";
+    var url = "https://api.wunderground.com/api/" + apiKey + "/geolookup/q/autoip.json";
     $.getJSON(url, {}, getZip);
 }
 
@@ -14,7 +14,7 @@ function getZip(resp) {
         return;
     }
     zipCode = encodeURIComponent(zipCode);
-    var url = "http://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
+    var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
     $.getJSON(url, {}, getLocation());
 }
