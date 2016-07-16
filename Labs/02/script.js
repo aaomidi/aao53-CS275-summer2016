@@ -1,6 +1,5 @@
 var apiKey = "";
 function callAPI() {
-    delete console.log;
     var element = document.getElementById("input");
     apiKey = element.value;
     apiKey = encodeURIComponent(apiKey);
@@ -15,7 +14,7 @@ function getZip(resp) {
         return;
     }
     zipCode = encodeURIComponent(zipCode);
-    console.log(zipCode);
+    alert(zipCode);
     var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
     $.getJSON(url, {}, getLocation);
@@ -25,5 +24,5 @@ function getLocation(resp) {
     console.log(JSON.stringify(resp));
 }
 function error(error) {
-
+    console.log(error);
 }
