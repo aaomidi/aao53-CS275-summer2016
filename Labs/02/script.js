@@ -1,5 +1,7 @@
 var apiKey = "";
 function callAPI() {
+    $.timeago().settings.allowFuture = true;
+
     var element = document.getElementById("input");
     apiKey = element.value;
     apiKey = encodeURIComponent(apiKey);
@@ -60,9 +62,11 @@ function makeTable() {
 function addData(tbl, info, i) {
     addRow(tbl, 3);
     var d = new Date(info.epoch * 1000);
+
     var img = document.createElement("img");
     img.setAttribute('src', info.iconURL);
-    tbl.rows[i].cells[0].innerHTML = d.toLocaleDateString();
+    var time = $.timeago(d);
+    tbl.rows[i].cells[0].innerHTML = time;
     tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
