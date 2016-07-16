@@ -3,13 +3,13 @@ table {
     width: 100px;
 }
 
-time {
+time, .mytemp {
     cursor: pointer;
     color: blue;
     text-decoration: underline;
 }
 
-time:hover {
+time:hover, .mytemp:hover {
     text-decoration: none;
     text-shadow: 1px 1px 1px #555;
 }

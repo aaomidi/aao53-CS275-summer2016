@@ -93,8 +93,14 @@ function addData(tbl, info, i) {
     time.innerHTML = jQuery.timeago(d);
     time.setAttribute('onclick', "timeUpdate(this)");
 
+    var temp = document.createElement("span");
+    temp.classList.add("mytemp");
+    temp.setAttribute("data-tempC", info.tempCelsius);
+    temp.setAttribute("data-tempF", "" + ((Number(info.tempCelsius) * 1.8) + 32));
+    temp.setAttribute('onclick', "tempUpdate(this)");
+    temp.innerHTML = info.tempCelsius + " C";
     tbl.rows[i].cells[0].innerHTML = time.outerHTML;
-    tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
+    tbl.rows[i].cells[1].innerHTML = temp.outerHTML;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
 
@@ -109,6 +115,16 @@ function timeUpdate(elm) {
     } else {
         jelm.data('type', "fuz");
         elm.innerHTML = jQuery.timeago(new Date(Number(elm.getAttribute('data-epoch'))));
+    }
+}
+function tempUpdate(elm) {
+    var jelm = $(elm);
+    if (jelm.data('type') == null || jelm.data('type') === "C") {
+        jelm.data('type', 'F');
+        elm.innerHTML = elm.getAttribute("data-tempF") + " F";
+    } else {
+        jelm.data('type', 'C');
+        elm.innerHTML = elm.getAttribute("data-tempC") + " C";
     }
 }
 /**
