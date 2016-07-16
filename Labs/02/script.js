@@ -1,5 +1,6 @@
 var apiKey = "";
 function callAPI() {
+    delete console.log;
     var element = document.getElementById("input");
     apiKey = element.value;
     apiKey = encodeURIComponent(apiKey);
