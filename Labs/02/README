@@ -21,3 +21,5 @@ Written scripts: /templates/load.js, /Labs/02/script.js
 It simply gets the API code entered by the user, finds the location of the user using their IP (very inaccurate but works) and returns the weather styled in a table to the client.
 
 The timeago library was included for a better UX.
+
+Youtube video explaining the code: https://www.youtube.com/watch?v=Oj1WUdYnf90

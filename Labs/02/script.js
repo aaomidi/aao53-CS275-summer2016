@@ -92,7 +92,6 @@ function addData(tbl, info, i) {
 
     time.innerHTML = jQuery.timeago(d);
     time.setAttribute('onclick', "timeUpdate(this)");
-    //time.addEventListener("click",timeUpdate);
 
     tbl.rows[i].cells[0].innerHTML = time.outerHTML;
     tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
@@ -113,9 +112,9 @@ function timeUpdate(elm) {
     }
 }
 /**
- * Adds a row to the table with two cells.
+ * Adds a row to the table with count cells.
  * @param tbl The table obj
- * @param count Number of rows.
+ * @param count Number of cells.
  */
 function addRow(tbl, count) {
     var newRow = tbl.insertRow();
