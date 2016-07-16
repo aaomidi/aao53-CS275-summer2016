@@ -16,7 +16,7 @@ function getZip(resp) {
     zipCode = encodeURIComponent(zipCode);
     var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
-    $.getJSON(url, {}, getLocation());
+    $.getJSON(url, {}, getLocation);
 }
 function getLocation(resp) {
     console.log(resp);
