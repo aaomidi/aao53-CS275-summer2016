@@ -19,7 +19,7 @@ function getZip(resp) {
     $.getJSON(url, {}, getLocation());
 }
 function getLocation(resp) {
-    alert(resp);
+    console.log(resp);
 }
 function error(error) {
 
