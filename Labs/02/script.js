@@ -8,7 +8,7 @@ function callAPI() {
 }
 
 function getZip(resp) {
-    var zipCode = resp.location.zipcode;
+    var zipCode = resp.location.zip;
     if (zipCode == null) {
         error("Zipcode was not found.");
         return;
