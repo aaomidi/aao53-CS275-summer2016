@@ -70,7 +70,6 @@ function addData(tbl, info, i) {
     time.classList.add("mytime");
     time.setAttribute('data-epoch', "" + info.epoch * 1000);
 
-    $(time).data('data-type', "fuz");
     time.innerHTML = jQuery.timeago(d);
     time.setAttribute('onclick', "timeUpdate(this)");
     //time.addEventListener("click",timeUpdate);
@@ -82,12 +81,15 @@ function addData(tbl, info, i) {
 
 function timeUpdate(elm) {
     var jelm = $(elm);
-    if (jelm.data('date-type') === "fuz") {
-        jelm.data('data-type', "exact");
-        elm.innerHTML = new Date(elm.getAttribute('data-epoch')).toLocaleString();
+    if (jelm.data('type') === null) {
+        jelm.data('type', "fuz");
+    }
+    if (jelm.data('type') === "fuz") {
+        jelm.data('type', "exact");
+        elm.innerHTML = new Date(Number(elm.getAttribute('data-epoch'))).toLocaleString();
     } else {
-        jelm.data('data-type', "fuz");
-        elm.innerHTML = jQuery.timeago(new Date(elm.getAttribute('data-epoch')));
+        jelm.data('type', "fuz");
+        elm.innerHTML = jQuery.timeago(Number(new Date(elm.getAttribute('data-epoch'))));
     }
 }
 /**
