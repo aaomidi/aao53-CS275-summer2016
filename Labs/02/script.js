@@ -81,7 +81,7 @@ function addData(tbl, info, i) {
 
 function timeUpdate(elm) {
     var jelm = $(elm);
-    if (jelm.data('type') === null) {
+    if (jelm.data('type') == null) {
         jelm.data('type', "fuz");
     }
     if (jelm.data('type') === "fuz") {
