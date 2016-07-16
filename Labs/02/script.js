@@ -6,7 +6,16 @@ function callAPI() {
     apiKey = element.value;
     apiKey = encodeURIComponent(apiKey);
     var url = "https://api.wunderground.com/api/" + apiKey + "/geolookup/q/autoip.json";
-    $.getJSON(url, {}, getZip);
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        data: "[]",
+        dataType: "jsonp",
+        success: getZip,
+        error: error
+    });
 }
 
 function getZip(resp) {
@@ -19,7 +28,17 @@ function getZip(resp) {
     document.getElementById("zip").innerHTML = "Zipcode found: " + zipCode;
     var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
-    $.getJSON(url, {}, getWeather);
+    //$.getJSON(url, {}, getWeather);
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        data: "[]",
+        dataType: "jsonp",
+        success: getWeather,
+        error: error
+    });
 }
 function getWeather(resp) {
     var t = makeTable();
@@ -104,6 +123,13 @@ function addRow(tbl, count) {
         newRow.insertCell();
     }
 }
-function error(error) {
-    console.log(error);
+function error(xhr, ajaxOptions, thrownError) {
+    console.log(thrownError);
+    var tableD = document.getElementById("results");
+
+    while (tableD.firstChild) {
+        tableD.removeChild(tableD.firstChild);
+    }
+
+    tableD.innerHTML = thrownError;
 }
