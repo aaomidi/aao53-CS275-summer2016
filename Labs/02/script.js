@@ -16,11 +16,12 @@ function getZip(resp) {
         return;
     }
     zipCode = encodeURIComponent(zipCode);
+    document.getElementById("zip").innerHTML = "Zipcode found: " + zipCode;
     var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
-    $.getJSON(url, {}, getLocation);
+    $.getJSON(url, {}, getWeather);
 }
-function getLocation(resp) {
+function getWeather(resp) {
     var t = makeTable();
     var i = 0;
     for (var key in resp.hourly_forecast) {
