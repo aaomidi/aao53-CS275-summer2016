@@ -1,0 +1,23 @@
+Site for project: https://cs275.aaomidi.com/
+
+Amir Omidi
+Web and Mobile App Development
+Lab 2
+email: aao53@drexel.edu
+
+Labs are included in /Labs/. https://cs275.aaomidi.com/Labs
+
+Lab 2 documentation:
+
+File location: /Labs/02/aao53_lab2.html
+
+Included styles: Bootstrap
+Included scripts: jQuery, timeago (https://github.com/rmm5t/jquery-timeago)
+
+Written styles: /templates/style.css, /Labs/02/style.css
+Written scripts: /templates/load.js, /Labs/02/script.js
+
+/Labs/02/script.js controls the ajax weather fetching.
+It simply gets the API code entered by the user, finds the location of the user using their IP (very inaccurate but works) and returns the weather styled in a table to the client.
+
+The timeago library was included for a better UX.

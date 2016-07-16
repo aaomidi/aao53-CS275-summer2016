@@ -1,0 +1,24 @@
+Site for project: https://cs275.aaomidi.com/
+
+Amir Omidi
+Web and Mobile App Development
+Lab 1
+email: aao53@drexel.edu
+
+Labs are included in /Labs/. https://cs275.aaomidi.com/Labs
+
+Lab 1 documentation:
+
+File location: /Labs/01/aao53_lab1.html
+
+Included styles: Bootstrap
+Included scripts: jQuery
+
+Written styles: /templates/style.css
+Written scripts: /templates/load.js, /Labs/01/script.js
+
+/Labs/01/script.js controls the fibonacci's execution.
+The script puts a table inside the tableD div. It fills this table with the fibonacci sequence.
+load.js loads the navbar into all of the web pages, instead of copy-pasting code.
+
+Youtube video explaining the code: https://www.youtube.com/watch?v=kVHovNqonyc
