@@ -28,6 +28,7 @@ function getLocation(resp) {
         var tempCelsius = resp.hourly_forecast[key].temp.metric;
         var condition = resp.hourly_forecast[key].conditon;
         var iconURL = resp.hourly_forecast[key].icon_url;
+        iconURL = iconURL.replace(/^http:\/\//i, 'https://');
 
         var info = {
             time: time,
@@ -40,7 +41,7 @@ function getLocation(resp) {
     }
 }
 function makeTable() {
-    var tableD = document.getElementById(results);
+    var tableD = document.getElementById("results");
 
     while (tableD.firstChild) {
         tableD.removeChild(tableD.firstChild);
