@@ -14,11 +14,13 @@ function getZip(resp) {
         return;
     }
     zipCode = encodeURIComponent(zipCode);
+    console.log(zipCode);
     var url = "https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + zipCode + ".json";
 
     $.getJSON(url, {}, getLocation);
 }
 function getLocation(resp) {
+    console.log("Ok");
     console.log(JSON.stringify(resp));
 }
 function error(error) {
