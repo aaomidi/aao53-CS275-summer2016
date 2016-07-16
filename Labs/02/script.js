@@ -71,21 +71,22 @@ function addData(tbl, info, i) {
     time.setAttribute('data-epoch', "" + info.epoch * 1000);
     time.setAttribute('data-type', "fuz");
     time.innerHTML = jQuery.timeago(d);
-    time.click(function () {
-        if (time.getAttribute('date-type') === "fuz") {
-            time.setAttribute('data-type', "exact");
-            time.innerHTML = new Date(time.getAttribute('data-epoch')).toLocaleString();
-        } else {
-            time.setAttribute('data-type', "fuz");
-            time.innerHTML = jQuery.timeago(new Date(time.getAttribute('data-epoch')));
-        }
-    });
+    time.setAttribute('onclick', "timeUpdate(this)");
+    //time.addEventListener("click",timeUpdate);
 
     tbl.rows[i].cells[0].innerHTML = time.outerHTML;
     tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
-
+function timeUpdate(elm) {
+    if (elm.getAttribute('date-type') === "fuz") {
+        elm.setAttribute('data-type', "exact");
+        elm.innerHTML = new Date(elm.getAttribute('data-epoch')).toLocaleString();
+    } else {
+        elm.setAttribute('data-type', "fuz");
+        elm.innerHTML = jQuery.timeago(new Date(elm.getAttribute('data-epoch')));
+    }
+}
 /**
  * Adds a row to the table with two cells.
  * @param tbl The table obj
