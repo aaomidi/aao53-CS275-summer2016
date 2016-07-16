@@ -37,6 +37,7 @@ function getLocation(resp) {
             condition: condition,
             iconURL: iconURL
         };
+
         addData(t, info, i);
     }
 }
@@ -48,6 +49,7 @@ function makeTable() {
     }
 
     var tbl = tableD.appendChild(document.createElement("table"));
+    tbl.classList.add("table", "table-nonfluid");
     addRow(tbl, 3);
     tbl.rows[0].cells[0].innerHTML = "Time";
     tbl.rows[0].cells[1].innerHTML = "Temperature";
@@ -60,9 +62,9 @@ function addData(tbl, info, i) {
     var d = new Date(info.epoch * 1000);
     var img = document.createElement("img");
     img.setAttribute('src', info.iconURL);
-    tbl.rows[i].columns[0].innerHTML = d.toLocaleDateString();
-    tbl.rows[i].columns[1].innerHTML = info.tempCelsius;
-    tbl.rows[i].columns[2].innerHTML = img.outerHTML;
+    tbl.rows[i].cells[0].innerHTML = d.toLocaleDateString();
+    tbl.rows[i].cells[1].innerHTML = info.tempCelsius;
+    tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
 
 /**
