@@ -1,4 +1,7 @@
 var apiKey = "";
+/**
+ * Called from site
+ */
 function callAPI() {
     jQuery.timeago.settings.allowFuture = true;
 
@@ -17,7 +20,10 @@ function callAPI() {
         error: error
     });
 }
-
+/**
+ * Get the zipcode from the json response, send get weather request.
+ * @param resp
+ */
 function getZip(resp) {
     var zipCode = resp.location.zip;
     if (zipCode == null) {
@@ -40,6 +46,10 @@ function getZip(resp) {
         error: error
     });
 }
+/**
+ * Get the weather from the JSON response.
+ * @param resp
+ */
 function getWeather(resp) {
     var t = makeTable();
     var i = 0;
@@ -63,6 +73,10 @@ function getWeather(resp) {
         addData(t, info, i);
     }
 }
+/**
+ * Create the table and initalize first row.
+ * @returns {Node}
+ */
 function makeTable() {
     var tableD = document.getElementById("results");
 
@@ -79,6 +93,13 @@ function makeTable() {
 
     return tbl;
 }
+
+/**
+ * Add a row of data to the table.
+ * @param tbl The table
+ * @param info The information in json.
+ * @param i The index of the row.
+ */
 function addData(tbl, info, i) {
     addRow(tbl, 3);
     var d = new Date(info.epoch * 1000);
@@ -103,7 +124,10 @@ function addData(tbl, info, i) {
     tbl.rows[i].cells[1].innerHTML = temp.outerHTML;
     tbl.rows[i].cells[2].innerHTML = img.outerHTML;
 }
-
+/**
+ * Called when clicking the time tag.
+ * @param elm
+ */
 function timeUpdate(elm) {
     var jelm = $(elm);
     if (jelm.data('type') == null) {
@@ -117,6 +141,10 @@ function timeUpdate(elm) {
         elm.innerHTML = jQuery.timeago(new Date(Number(elm.getAttribute('data-epoch'))));
     }
 }
+/**
+ * Called when clicking the temperature tag.
+ * @param elm
+ */
 function tempUpdate(elm) {
     var jelm = $(elm);
     if (jelm.data('type') == null || jelm.data('type') === "C") {
