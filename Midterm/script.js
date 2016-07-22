@@ -5,7 +5,10 @@ var board = [
     [null, null, null]
 ];
 isFinished = false;
-
+/**
+ * Called when one of the boxes for the game was clicked on.
+ * @param element
+ */
 function clickedBox(element) {
     if (lastUsed == null) {
         lastUsed = "O";
