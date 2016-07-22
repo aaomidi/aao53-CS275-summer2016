@@ -1,0 +1,21 @@
+Site for project: https://cs275.aaomidi.com/
+
+Amir Omidi
+Web and Mobile App Development
+Midterm
+email: aao53@drexel.edu
+
+
+Midterm documentation:
+
+File location: /Midterm/aao53_midterm.html
+
+Included styles: Bootstrap
+Included scripts: jQuery, timeago (https://github.com/rmm5t/jquery-timeago)
+
+Written styles: /templates/style.css, /Midterm/style.css
+Written scripts: /templates/load.js, /Midterm/script.js
+
+/Midterm/script.js Controls the game execution.
+
+Video of the project: https://www.youtube.com/watch?v=wcVzOkumZ8U
