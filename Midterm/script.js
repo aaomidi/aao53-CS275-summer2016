@@ -32,7 +32,6 @@ function clickedBox(element) {
 
     if (win == true) {
         console.log("Win");
-        alert(toUse + " won the game!");
         isFinished = true;
         if (toUse == "X") {
             $("#turnp").html("Player 1 won!")
@@ -42,7 +41,6 @@ function clickedBox(element) {
         showOverlay(toUse);
     } else if (win == "tie") {
         console.log("Tie");
-        alert("Tied game");
         isFinished = true;
     }
 
