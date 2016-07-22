@@ -4,6 +4,7 @@ var board = [
     [null, null, null],
     [null, null, null]
 ];
+isFinished = false;
 
 function clickedBox(element) {
     if (lastUsed == null) {
@@ -13,7 +14,7 @@ function clickedBox(element) {
     var row = parseInt(cell[1]);
     var col = parseInt(cell[2]);
 
-    if (board[row][col] != null) { // Make sure its empty
+    if (board[row][col] != null || isFinished) { // Make sure its empty
         return;
     }
 
@@ -28,8 +29,28 @@ function clickedBox(element) {
     element.innerHTML = toUse;
     board[row][col] = toUse;
     var win = checkWin();
+
     if (win == true) {
+        console.log("Win");
         alert(toUse + " won the game!");
+        isFinished = true;
+        if (toUse == "X") {
+            $("#turnp").html("Player 1 won!")
+        } else {
+            $("#turnp").html("Player 2 won!")
+        }
+        showOverlay(toUse);
+    } else if (win == "tie") {
+        console.log("Tie");
+        alert("Tied game");
+        isFinished = true;
+    }
+
+
+    if (toUse == "X") {
+        $("#turn").text("1");
+    } else {
+        $("#turn").text("2");
     }
 
 }
@@ -113,12 +134,36 @@ function checkWin() {
     if (win == true) {
         return win;
     }
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            if (board[i][j] == null) {
+                return;
+            }
+        }
+    }
+    return "tie";
 }
 
 function resetGame() {
-    $("#game").children().each(function () {
-        this.innerHTML = "";
-    });
     lastUsed = null;
+    isFinished = null;
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            board[i][j] = null;
+            $("#b" + i + j).text("");
+        }
+    }
+    $("#turnp").html("Turn: Player \<span id='turn'\>1\<\/span\>'s");
+    $(".overlay").css("width", "0%");
+
+}
+function showOverlay(win) {
+    $(".overlay").css("width", "100%");
+    if (win == "X") {
+        $("#overwin").text("Player 1 won!")
+    } else {
+        $("#overwin").text("Player 2 won!")
+    }
 }
 

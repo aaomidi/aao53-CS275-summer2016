@@ -2,10 +2,49 @@ body {
     padding-top: 100px;
 }
 
+h1 {
+    text-align: center;
+}
+
 .row#game {
     width: 400px;
     height: 400px;
     margin: 5vh auto;
+}
+
+#turn {
+    font-weight: bold;
+    color: gray;
+}
+
+.overlay {
+    padding-top: 100px;
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+    color: white;
+}
+
+#overwin {
+    font-size: 64px;
+    text-align: center;
+}
+
+#turnp {
+    text-align: center;
+    font-size: 24px;
+}
+
+.button {
+    text-align: center;
+    color: black;
 }
 
 .col-xs-4 {

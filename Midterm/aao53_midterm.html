@@ -26,8 +26,23 @@
 
 </head>
 <body>
-<div class="container-fluid">
-    <div id="navbar"></div>
+<div id="navbar"></div>
+
+<div class="container">
+    <h1>Tic Tac Toe!</h1>
+    <div class="row">
+        <p id="turnp">Turn: Player <span id="turn">1</span>'s</p>
+        <div class="button">
+            <button id="reset" onclick="resetGame()">Reset</button>
+        </div>
+    </div>
+    <div class="overlay">
+        <p id="overwin">Winner!</p>
+        <div class="button">
+            <button onclick="resetGame()">Reset</button>
+        </div>
+    </div>
+    <div></div>
     <div class="row" id="game">
         <div id="b00" class="b1 col-xs-4" onclick="clickedBox(this)"></div>
         <div id="b01" class="b2 col-xs-4" onclick="clickedBox(this)"></div>
