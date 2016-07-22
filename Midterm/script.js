@@ -53,6 +53,10 @@ function clickedBox(element) {
     }
 
 }
+/**
+ * Checks to see if the game has been won by any player.
+ * @returns {*}
+ */
 function checkWin() {
     // Check col
     for (i = 0; i < 3; i++) { // Rows
@@ -143,7 +147,9 @@ function checkWin() {
     }
     return "tie";
 }
-
+/**
+ * Resets the game.
+ */
 function resetGame() {
     lastUsed = null;
     isFinished = null;
@@ -157,6 +163,10 @@ function resetGame() {
     $(".overlay").css("width", "0%");
 
 }
+/**
+ * Shows the winning overlay.
+ * @param win The winning player.
+ */
 function showOverlay(win) {
     $(".overlay").css("width", "100%");
     if (win == "X") {
