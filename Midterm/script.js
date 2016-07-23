@@ -43,6 +43,7 @@ function clickedBox(element) {
         showOverlay(toUse);
     } else if (win == "tie") {
         isFinished = true;
+        showOverlay("tie");
     }
 
 
@@ -171,8 +172,10 @@ function showOverlay(win) {
     $(".overlay").css("width", "100%");
     if (win == "X") {
         $("#overwin").text("Player 1 won!")
-    } else {
+    } else if (win == "O") {
         $("#overwin").text("Player 2 won!")
+    } else {
+        $("#overwin").text("Tie!")
     }
 }
 
