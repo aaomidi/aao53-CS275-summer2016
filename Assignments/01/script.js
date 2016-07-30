@@ -5,7 +5,7 @@ var rowIndex = 0;
 var calls = 0;
 var dataSet;
 function callAPI() {
-    cleanTable(document.getElementById("results"));
+    //cleanTable(document.getElementById("results"));
     rowIndex = 0;
     $.each(routes, function (index, route) {
         $.ajax({
@@ -33,36 +33,50 @@ function displayData() {
     $('#tbl').DataTable({
         data: dataSet,
         columns: [
-            {title: "Route"},
-            {title: "Vehicle Number"},
-            {title: "Block ID"},
-            {title: "Direction"},
-            {title: "Destination"},
-            {title: "Delay"}
-        ]
+            {data: "route"},
+            {data: "vehicleID"},
+            {data: "blockID"},
+            {data: "direction"},
+            {data: "destination"},
+            {
+                data: {
+                    _: "delay.off",
+                    sort: "delay.exact"
+                }
+            }
+        ],
+        iDisplayLength: 50
     });
 }
 
 function display(resp) {
     var tbl;
     if (rowIndex == 0) {
-        makeTable();
         dataSet = [];
     }
     tbl = document.getElementById("tbl");
 
     for (var b in resp.bus) {
-        dataSet[rowIndex] = [];
-        dataSet[rowIndex][0] = resp.route;
-        dataSet[rowIndex][1] = resp.bus[b].VehicleID;
-        dataSet[rowIndex][2] = resp.bus[b].BlockID;
-        dataSet[rowIndex][3] = resp.bus[b].Direction;
-        dataSet[rowIndex][4] = resp.bus[b].destination;
         var off = resp.bus[b].Offset;
+        var exact = resp.bus[b].Offset_sec;
         if (Number(off) <= 2) {
             off = "on-time";
         }
-        dataSet[rowIndex][5] = off;
+        var delay = {
+            off: off,
+            exact: exact
+        };
+
+        var info = {
+            route: resp.route,
+            vehicleID: resp.bus[b].VehicleID,
+            blockID: resp.bus[b].BlockID,
+            direction: resp.bus[b].Direction,
+            destination: resp.bus[b].destination,
+            delay: delay
+        };
+
+        dataSet[rowIndex] = info;
         rowIndex++;
     }
 }

@@ -1,4 +1,7 @@
 table {
     border: 1px;
-    width: 100px;
+}
+
+#results {
+    padding-top: 10px;
 }
