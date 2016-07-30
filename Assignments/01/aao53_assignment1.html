@@ -11,6 +11,13 @@
     <script type="text/javascript"
             src="/templates/bootstrap.min.js"></script>
 
+    <script type="text/javascript"
+            src="/templates/jquery.dataTables.js"></script>
+    <script type="text/javascript"
+            src="/templates/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="/templates/dataTables.fixedHeader.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/templates/style.css">
@@ -21,12 +28,16 @@
 
     <script src="/templates/load.js"></script>
     <script type="text/javascript">
-        load(document, "assignments");
+
+        load(document, "assignments", callAPI);
+
     </script>
 
 </head>
 <body>
 <div id="navbar"></div>
-
+<div class="container">
+    <div class="col-md-9" id="results"></div>
+</div>
 </body>
 </html>
