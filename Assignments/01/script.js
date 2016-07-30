@@ -58,13 +58,12 @@ function display(resp) {
 
     for (var b in resp.bus) {
         var off = resp.bus[b].Offset;
-        var exact = resp.bus[b].Offset_sec;
         if (Number(off) <= 2) {
             off = "on-time";
         }
         var delay = {
             off: off,
-            exact: exact
+            exact: resp.bus[b].Offset
         };
 
         var info = {
