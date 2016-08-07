@@ -1,4 +1,4 @@
-var url = "http://localhost:1234/show/";
+var url = "https://lab3.cs275.aaomidi.com/show/";
 function callAPI(x) {
     var u = urlMaker(x);
     $.ajax({
