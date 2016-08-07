@@ -1,4 +1,8 @@
 var url = "https://lab3.aaomidi.com/show/";
+String.prototype.capitalizeFirstLetter = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 function callAPI(x) {
     var u = urlMaker(x);
     $.ajax({
@@ -50,13 +54,296 @@ function urlMaker(x) {
 
 function succ(x, resp) {
     $("#jsonArea").html(syntaxHighlight(resp));
-    // document.getElementById('jsonArea').innerHTML=syntaxHighlight(resp);
+    $("#tableArea").html("");
     switch (x) {
         case 1:
         {
+            makeTable();
+            var tbl = $('#tbl').DataTable({
+                data: resp.students,
+                columns: [
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ''
+                    },
+                    {
+                        title: "First Name",
+                        data: "first_name"
+                    },
+                    {
+                        title: "Last Name",
+                        data: "last_name"
+                    },
+                    {
+                        title: "Student ID",
+                        data: "studentID"
+                    },
+                    {
+                        title: "Major",
+                        data: "major"
+                    },
+                    {
+                        title: "Age",
+                        data: "age"
+                    }
+                ],
+                iDisplayLength: 50
+            });
+            $('#tbl tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = tbl.row(tr);
 
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+
+            break;
+        }
+        case 2:
+        {
+            makeTable();
+            $('#tbl').DataTable({
+                data: resp.students,
+                columns: [
+                    {
+                        title: "First Name",
+                        data: "first_name"
+                    },
+                    {
+                        title: "Last Name",
+                        data: "last_name"
+                    },
+                    {
+                        title: "Student ID",
+                        data: "studentID"
+                    }
+                ],
+                iDisplayLength: 50
+            });
+            break;
+        }
+        case 3:
+        {
+            var dataSet = {
+                data: []
+            };
+            for (var c in resp.courses) {
+                dataSet.data.push([resp.courses[c]]);
+            }
+
+            makeTable();
+            $('#tbl').DataTable({
+                data: dataSet.data,
+                columns: [
+                    {title: "Courses"}
+                ],
+                iDisplayLength: 10
+            });
+            break;
+        }
+        case 4:
+        {
+            makeTable();
+            if ($("#report-selection").val() === "name") {
+                var tbl = $('#tbl').DataTable({
+                    data: resp.students,
+                    columns: [
+                        {
+                            "className": 'details-control',
+                            "orderable": false,
+                            "data": null,
+                            "defaultContent": ''
+                        },
+                        {
+                            title: "First Name",
+                            data: "first_name"
+                        },
+                        {
+                            title: "Last Name",
+                            data: "last_name"
+                        }
+                    ],
+                    iDisplayLength: 50
+                });
+                $('#tbl tbody').on('click', 'td.details-control', function () {
+                    var tr = $(this).closest('tr');
+                    var row = tbl.row(tr);
+
+                    if (row.child.isShown()) {
+                        row.child.hide();
+                        tr.removeClass('shown');
+                    }
+                    else {
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                    }
+                });
+            } else {
+                var tbl = $('#tbl').DataTable({
+                    data: resp.students,
+                    columns: [
+                        {
+                            "className": 'details-control',
+                            "orderable": false,
+                            "data": null,
+                            "defaultContent": ''
+                        },
+                        {
+                            title: "Student ID",
+                            data: "studentID"
+                        }
+                    ],
+                    iDisplayLength: 50
+                });
+                $('#tbl tbody').on('click', 'td.details-control', function () {
+                    var tr = $(this).closest('tr');
+                    var row = tbl.row(tr);
+
+                    if (row.child.isShown()) {
+                        row.child.hide();
+                        tr.removeClass('shown');
+                    }
+                    else {
+                        row.child(format(row.data())).show();
+                        tr.addClass('shown');
+                    }
+                });
+            }
+
+
+            break;
+        }
+        case 5:
+        {
+            $("#tableArea").text("Number of students: " + resp.size);
+            break;
+        }
+        case 6:
+        {
+            var dataSet = {
+                data: []
+            };
+            for (var c in resp.courses) {
+                dataSet.data.push([resp.courses[c]]);
+            }
+
+            makeTable();
+            $('#tbl').DataTable({
+                data: dataSet.data,
+                columns: [
+                    {title: "Courses"}
+                ],
+                iDisplayLength: 10
+            });
+            break;
+        }
+        case 7:
+        {
+            var dataSet = {
+                data: []
+            };
+            for (var c in resp.majors) {
+                dataSet.data.push([resp.majors[c]]);
+            }
+
+            makeTable();
+            $('#tbl').DataTable({
+                data: dataSet.data,
+                columns: [
+                    {title: "Majors"}
+                ],
+                iDisplayLength: 10
+            });
+            break;
+        }
+        case 8:
+        {
+            makeTable();
+            var tbl = $('#tbl').DataTable({
+                data: resp.students,
+                columns: [
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ''
+                    },
+                    {
+                        title: "First Name",
+                        data: "first_name"
+                    },
+                    {
+                        title: "Last Name",
+                        data: "last_name"
+                    },
+                    {
+                        title: "Student ID",
+                        data: "studentID"
+                    },
+                    {
+                        title: "Major",
+                        data: "major"
+                    },
+                    {
+                        title: "Age",
+                        data: "age"
+                    }
+                ],
+                iDisplayLength: 50
+            });
+            $('#tbl tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = tbl.row(tr);
+
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+            break;
         }
     }
+}
+/* Formatting function for row details - modify as you need */
+function format(d) {
+    var result = '<table class="table">';
+    for (var g in d.grades) {
+        result += "<tr>";
+        var grade = d.grades[g];
+        result += "<td>";
+        result += grade.course;
+        result += "</td>";
+        result += "<td>";
+        result += grade.termTaken.capitalizeFirstLetter();
+        result += "</td>";
+        result += "<td>";
+        result += grade.grade;
+        result += "</td>";
+
+        result += "</tr>";
+    }
+
+    result += '</table>';
+    return result;
+}
+
+function makeTable() {
+    $("#tableArea").empty();
+    var table = $("<table/>").attr("id", "tbl");
+    table.addClass("table table-nonfluid table-bordered table-striped");
+    $("#tableArea").append(table);
 }
 function syntaxHighlight(json) {
     if (typeof json != 'string') {

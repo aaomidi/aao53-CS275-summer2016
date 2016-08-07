@@ -159,7 +159,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
                 }
                 case "name":
                 {
-                    var query = "SELECT l3_students.studentID, l3_students.name_first, l3_students.name_last, l3_grades.courseName, l3_grades.termTaken, l3_grades.grade FROM l3_students INNER JOIN l3_grades ON l3_students.studentID=l3_grades.studentID ORDER BY l3_students.studentID;";
+                    var query = "SELECT l3_students.studentID, l3_students.name_first, l3_students.name_last, l3_grades.courseName, l3_grades.termTaken, l3_grades.grade FROM l3_students INNER JOIN l3_grades ON l3_students.studentID=l3_grades.studentID ORDER BY l3_grades.termTaken;";
                     con.query(query, function (err, rows, fields) {
                         if (err) throw err;
                         var result = {
@@ -197,6 +197,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
                     break;
                 }
             }
+            break;
         }
         case "search":
         {

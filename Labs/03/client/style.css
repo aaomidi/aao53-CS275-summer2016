@@ -20,7 +20,6 @@ select {
 }
 
 #tableArea {
-    overflow: scroll;
     height: 50%;
 }
 
@@ -54,4 +53,13 @@ pre {
 
 .key {
     color: red;
+}
+
+td.details-control {
+    background: url('/templates/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/templates/details_close.png') no-repeat center center;
 }
