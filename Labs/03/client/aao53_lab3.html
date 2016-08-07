@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Amir Omidi's Lab 3</title>
+    <script type="text/javascript"
+            src="/templates/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="/templates/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="/templates/bootstrap-theme.min.css"/>
+    <script type="text/javascript"
+            src="/templates/bootstrap.min.js"></script>
+
+    <script type="text/javascript"
+            src="/templates/jquery.dataTables.js"></script>
+    <script type="text/javascript"
+            src="/templates/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="/templates/dataTables.fixedHeader.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/templates/style.css">
+
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+
+    <script src="/templates/load.js"></script>
+    <script type="text/javascript">
+        load(document, "labs");
+    </script>
+</head>
+<body>
+<div id="navbar"></div>
+<div class="container">
+    <h1>MySQL!</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-default btn-larger" onclick="callAPI(1);">Get Full Results</button>
+
+            <button class="btn btn-default btn-larger" onclick="callAPI(2);">List all students</button>
+
+            <select id="term-selection">
+                <option value="fall">Fall</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="all">All</option>
+            </select>
+            <button class="btn btn-default btn-smaller" onclick="callAPI(3);">List all courses</button>
+
+            <select id="report-selection">
+                <option value="name">Name</option>
+                <option value="studentID">studentID</option>
+            </select>
+            <button class="btn btn-default btn-smaller" onclick="callAPI(4);">Report</button>
+
+            <button class="btn btn-default btn-larger" onclick="callAPI(5);">Number of Students</button>
+
+            <button class="btn btn-default btn-larger" onclick="callAPI(6);">Show Courses</button>
+
+            <button class="btn btn-default btn-larger" onclick="callAPI(7);">Show Majors</button>
+
+            <select id="grade-selection">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+            </select>
+            <input type="text" placeholder="CS275" name="courseName" id="courseName">
+            <button class="btn btn-default btn-smaller" onclick="callAPI(8);">List Students</button>
+        </div>
+        <div class="col-md-8">
+            <div id="tableArea">
+            </div>
+            <div id="jsonArea">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

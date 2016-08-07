@@ -37,3 +37,4 @@ $RECYCLE.BIN/
 ## Bower
 node_components/
 bower_components/
+node_modules/

@@ -1,0 +1,57 @@
+table {
+    border: 1px;
+    width: 100px;
+}
+
+select {
+    width: 100px;
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
+.btn-larger {
+    width: 300px;
+}
+
+.btn-smaller {
+    width: 197px;
+}
+
+#tableArea {
+    overflow: scroll;
+    height: 50%;
+}
+
+#jsonArea {
+    border: solid black 1px;
+    overflow: scroll;
+    height: 50%;
+}
+
+pre {
+    outline: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}
