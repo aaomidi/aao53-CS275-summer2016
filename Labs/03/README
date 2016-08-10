@@ -1,0 +1,24 @@
+Site for project: https://cs275.aaomidi.com/
+
+Amir Omidi
+Web and Mobile App Development
+Lab 3
+email: aao53@drexel.edu
+
+Labs are included in /Labs/. https://cs275.aaomidi.com/Labs
+
+Assignment 1 documentation:
+
+File location:
+* Client: /Labs/03/client/
+* Server: /Labs/03/server/
+
+Included styles: Bootstrap
+Included scripts: jQuery, DataTables
+
+Written styles: /templates/style.css
+Written scripts: /templates/load.js, /Assignments/01/script.js
+
+The MySQL script to create the tables are included in the server folder and file tables.sql.
+
+Youtube video explaining the code: https://www.youtube.com/watch?v=HCPGmc-dZoM
