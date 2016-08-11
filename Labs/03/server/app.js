@@ -20,9 +20,36 @@ var connectToSQL = function () {
         } else {
             console.log("Connected to the database.");
         }
-    })
+    });
+    handleDisconnect(con);
 };
+/**
+ * Handles MySQL disconnects.
+ * @param connection
+ */
+function handleDisconnect(connection) {
+    connection.on('error', function (err) {
+        if (!err.fatal) {
+            return;
+        }
+        if (err.code !== 'PROTOCOL_CONNECTION_LOST') {
+            throw err;
+        }
+        console.log("Re-connecting lost connection: " + err.stack);
+        var obj = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
+        con = mysql.createConnection(obj.mysql);
+        handleDisconnect(con);
+        con.connect(function (err) {
+            if (err) {
+                console.log("Error connecting to database.");
+                console.log(err);
+            } else {
+                console.log("Connected to the database.");
+            }
+        })
+    })
+}
 
 app.get('/show/:type/:optional?/:optional2?', function (req, res) {
     switch (req.params.type) {
