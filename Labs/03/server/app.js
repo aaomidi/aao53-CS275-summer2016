@@ -17,44 +17,25 @@ var connectToSQL = function () {
         if (err) {
             console.log("Error connecting to database.");
             console.log(err);
+            setTimeout(connectToSQL, 2000);
         } else {
             console.log("Connected to the database.");
         }
     });
-    handleDisconnect(con);
-};
-/**
- * Handles MySQL disconnects.
- * @param connection
- */
-function handleDisconnect(connection) {
+
     connection.on('error', function (err) {
-        if (!err.fatal) {
-            return;
-        }
-        if (err.code !== 'PROTOCOL_CONNECTION_LOST') {
+        console.log('db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            connectToSQL();
+        } else {
             throw err;
         }
-        console.log("Re-connecting lost connection: " + err.stack);
-        var obj = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-
-        con = mysql.createConnection(obj.mysql);
-        handleDisconnect(con);
-        con.connect(function (err) {
-            if (err) {
-                console.log("Error connecting to database.");
-                console.log(err);
-            } else {
-                console.log("Connected to the database.");
-            }
-        })
-    })
-}
+    });
+};
 
 app.get('/show/:type/:optional?/:optional2?', function (req, res) {
     switch (req.params.type) {
-        case "all":
-        {
+        case "all": {
             var query = "SELECT l3_students.studentID, l3_students.name_first, l3_students.name_last, l3_students.age, l3_students.major, l3_grades.courseName, l3_grades.termTaken, l3_grades.grade FROM l3_students INNER JOIN l3_grades ON l3_students.studentID=l3_grades.studentID ORDER BY l3_students.studentID;";
             con.query(query, function (err, rows, fields) {
                 if (err) throw err;
@@ -93,8 +74,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
             });
             break;
         }
-        case "students":
-        {
+        case "students": {
             var query = "SELECT studentID, name_first, name_last from l3_students ORDER BY l3_students.studentID";
             var result = {
                 students: []
@@ -124,8 +104,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
             });
             break;
         }
-        case "courses":
-        {
+        case "courses": {
             var result = {
                 courses: []
             };
@@ -150,11 +129,9 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
             });
             break;
         }
-        case "report":
-        {
+        case "report": {
             switch (req.params.optional) {
-                case "studentID":
-                {
+                case "studentID": {
                     var query = "SELECT l3_students.studentID, l3_grades.courseName, l3_grades.termTaken, l3_grades.grade FROM l3_students INNER JOIN l3_grades ON l3_students.studentID=l3_grades.studentID ORDER BY l3_grades.termTaken;";
                     con.query(query, function (err, rows, fields) {
                         if (err) throw err;
@@ -184,8 +161,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
                     });
                     break;
                 }
-                case "name":
-                {
+                case "name": {
                     var query = "SELECT l3_students.studentID, l3_students.name_first, l3_students.name_last, l3_grades.courseName, l3_grades.termTaken, l3_grades.grade FROM l3_students INNER JOIN l3_grades ON l3_students.studentID=l3_grades.studentID ORDER BY l3_grades.termTaken;";
                     con.query(query, function (err, rows, fields) {
                         if (err) throw err;
@@ -226,8 +202,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
             }
             break;
         }
-        case "search":
-        {
+        case "search": {
             var courseGrade = req.params.optional;
             var courseName = req.params.optional2;
 
@@ -287,8 +262,7 @@ app.get('/show/:type/:optional?/:optional2?', function (req, res) {
             });
             break
         }
-        case "majors":
-        {
+        case "majors": {
             var result = {
                 majors: []
             };
