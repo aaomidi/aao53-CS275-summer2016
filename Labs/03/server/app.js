@@ -33,6 +33,7 @@ var connectToSQL = function () {
     });
 };
 
+
 app.get('/show/:type/:optional?/:optional2?', function (req, res) {
     switch (req.params.type) {
         case "all": {
@@ -294,6 +295,11 @@ server.listen(1234);
 
 if (require.main === module) {
     connectToSQL();
+
+    setInterval(function () {
+        console.log("Boop");
+        con.destroy();
+    }, 5000);
 }
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ' + err);
