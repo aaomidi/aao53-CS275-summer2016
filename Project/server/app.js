@@ -99,7 +99,8 @@ app.post('/api/get', function (req, res) {
             }, function (err, resp) {
                 var result = {
                     zipcode: 10000,
-                    found: false
+                    found: false,
+                    err: ""
                 };
                 if (err) {
                     console.log(err);
@@ -111,6 +112,11 @@ app.post('/api/get', function (req, res) {
                     if (addr.types[0] === "postal_code") {
                         result.zipcode = addr.short_name;
                         result.found = true;
+                        if (!zipcodeRegex.test(result.zipcode)) {
+                            result.zipcode = 12345;
+                            result.found = false;
+                            result.err = "Sorry your country isn't supported :(";
+                        }
                         break;
                     }
                 }

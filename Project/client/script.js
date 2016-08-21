@@ -25,11 +25,12 @@ function getZipcode() {
             });
         });
     } else {
-        alert("Since you didn't allow us to get your zipcode. We will be using 10000 as your default zipcode.");
+        console.warn("Since you didn't allow us to get your zipcode. We will be using 10000 as your default zipcode.");
     }
 }
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
+    if (json)
 }
 function error(err, textStatus, errorThrown) {
     console.warn(err);
