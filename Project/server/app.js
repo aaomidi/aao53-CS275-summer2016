@@ -47,7 +47,6 @@ var connectToSQL = function () {
 
 
 app.post('/api/get', function (req, res) {
-    console.log(req.body);
     var type = req.body.type;
     if (type == null) {
         console.log("Error :(");
@@ -111,6 +110,7 @@ app.post('/api/get', function (req, res) {
                 }
                 sendResults(result, req, res);
             });
+            break;
         }
     }
 });

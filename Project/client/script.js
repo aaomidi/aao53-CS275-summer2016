@@ -16,7 +16,7 @@ function getZipcode() {
             };
             $.ajax({
                 url: url,
-                type: "GET",
+                type: "POST",
                 contentType: "application/json; charset=utf-8",
                 data: data,
                 dataType: "jsonp",
