@@ -54,8 +54,6 @@ function loadTweets() {
 function submitTweet() {
     var name = $("#name").val();
     var tweet = $("#tweet").val();
-    console.log("Name:" + name);
-    console.log("Tweet:" + tweet);
 
     var r = nameRegex.test(name);
     if (!r) {
@@ -93,6 +91,7 @@ function tweet_callback(json) {
         console.log(json.messages[i]);
         $("#tweetRow").append("<div class='col-md-8 twt'>" + json.messages[i] + "</div>");
     }
+    loadTweets();
 }
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
