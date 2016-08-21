@@ -104,6 +104,7 @@ function zipcode_callback(json) {
     } else {
         zipcode = json.zipcode;
     }
+    $("#zip").html(zipcode);
     loadTweets();
 }
 function error(err, textStatus, errorThrown) {
