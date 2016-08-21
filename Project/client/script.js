@@ -1,6 +1,6 @@
 var zipcodeRegex = new RegExp(/^\d{5}$/);
-var nameRegex = new RegExp(/^[\w ]{1,16}$/);
-var messageRegex = new RegExp(/^[\w ]{1,140}$/);
+var nameRegex = new RegExp(/^[\w .]{1,16}$/);
+var messageRegex = new RegExp(/^[\w .]{1,140}$/);
 
 var zipcode = 12345;
 
@@ -54,16 +54,18 @@ function loadTweets() {
 function submitTweet() {
     var name = $("#name").val();
     var tweet = $("#tweet").val();
+    console.log("Name:" + name);
+    console.log("Tweet:" + tweet);
 
     var r = nameRegex.test(name);
     if (!r) {
-        $("#err").val("Name has an error!");
+        $("#err").html("Name has an error!");
         return;
     }
 
     r = messageRegex.test(tweet);
     if (!r) {
-        $("err").val("Message has an error!");
+        $("#err").html("Message has an error!");
         return;
     }
 
