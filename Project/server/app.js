@@ -106,7 +106,6 @@ app.post('/api/get', function (req, res) {
                 if (addr.types[0] === "postal_code") {
                     result.zipcode = addr.short_name;
                     result.found = true;
-                    break;
                 }
                 console.log("Sending!");
                 sendResults(result, req, res);
