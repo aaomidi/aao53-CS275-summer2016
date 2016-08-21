@@ -98,7 +98,7 @@ app.post('/api/get', function (req, res) {
                 if (err) {
                     console.log(err);
                     sendResults(result, req, res);
-                    break;
+                    return;
                 }
                 console.log("Looping?");
                 console.log(resp.results[0]);
