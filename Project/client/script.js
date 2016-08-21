@@ -88,6 +88,7 @@ function submitTweet() {
     });
 }
 function tweet_callback(json) {
+    $("#tweetRow").empty();
     for (var i in json.messages) {
         console.log(json.messages[i]);
         $("#tweetRow").append("<div class='col-md-8 twt'>" + json.messages[i] + "</div>");
