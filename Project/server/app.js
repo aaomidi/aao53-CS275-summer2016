@@ -74,8 +74,8 @@ app.post('/api/get', function (req, res) {
                 return;
             }
 
-            var query = "SELECT * FROM `amir_project` ORDER BY RAND() LIMIT 9;";
-            con.query(query, function (err, rows, fields) {
+            var query = "SELECT * FROM `amir_project` WHERE zipcode=? ORDER BY RAND() LIMIT 9;";
+            con.query(query, [zipcode], function (err, rows, fields) {
                 if (err) throw err;
 
                 var result = {
