@@ -48,7 +48,10 @@ function loadTweets() {
 
 }
 function tweet_callback(json) {
-    console.log(JSON.stringify(json, null, 2));
+    for (var i in json.messages) {
+        console.log(json.messages[i]);
+        $("#tweetRow").append("<div>" + json.messages[i] + "/<div>");
+    }
 }
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
