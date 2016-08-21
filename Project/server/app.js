@@ -95,6 +95,7 @@ app.post('/api/get', function (req, res) {
                 if (err) {
                     console.log(err);
                 }
+                console.log(JSON.stringify(resp.json));
                 console.log(resp.json);
                 console.log("\n\n\n");
                 console.log(resp.json.results[0].address_components[0]);
