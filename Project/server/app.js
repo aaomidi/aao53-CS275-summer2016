@@ -92,13 +92,23 @@ app.post('/api/get', function (req, res) {
                 latlng: [req.body.lat, req.body.long],
                 result_type: ['postal_code']
             }, function (err, resp) {
+                var result = {
+                    zipcode: 10000,
+                    found: false
+                };
                 if (err) {
                     console.log(err);
+                    sendResults(result, req, res);
                 }
-                console.log(JSON.stringify(resp.json, null, 2));
-                console.log(resp.json);
-                console.log("\n\n\n");
-                console.log(resp.json.results[0].address_components[0]);
+                for (var i in resp.results[0].address_components) {
+                    var addr = resp.results[0].address_components[i];
+                    if (addr.types[0] === "postal_code") {
+                        result.zipcode = addr.short_name;
+                        result.found = true;
+                        break;
+                    }
+                }
+                sendResults(result, req, res);
             });
         }
     }
