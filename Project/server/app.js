@@ -98,7 +98,10 @@ app.post('/api/get', function (req, res) {
                 if (err) {
                     console.log(err);
                     sendResults(result, req, res);
+                    break;
                 }
+                console.log("Looping?");
+                console.log(resp.results[0]);
                 for (var i in resp.results[0].address_components) {
                     var addr = resp.results[0].address_components[i];
                     console.log(JSON.string(addr, null, 2));
