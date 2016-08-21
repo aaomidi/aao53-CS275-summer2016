@@ -65,7 +65,6 @@ app.post('/api/get', function (req, res) {
             if (count <= 0 || count > 24) {
                 count = 12;
             }
-            console.log(count);
             var zipcode = req.body.zipcode;
             var result = zipcodeRegex.test(zipcode);
 
