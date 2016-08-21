@@ -10,8 +10,8 @@ var server = http.createServer(app);
 var con;
 
 var zipcodeRegex = new RegExp(/^\d{5}$/);
-var nameRegex = new RegExp(/^[\w ]{1,16}$/);
-var messageRegex = new RegExp(/^[\w ]{1,140}$/);
+var nameRegex = new RegExp(/^[\w .]{1,16}$/);
+var messageRegex = new RegExp(/^[\w .]{1,140}$/);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
