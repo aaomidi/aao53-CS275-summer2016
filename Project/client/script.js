@@ -1,3 +1,7 @@
+var zipcodeRegex = new RegExp(/^\d{5}$/);
+var nameRegex = new RegExp(/^[\w ]{1,16}$/);
+var messageRegex = new RegExp(/^[\w ]{1,140}$/);
+
 var zipcode = 12345;
 
 function getZipcode() {
@@ -46,6 +50,40 @@ function loadTweets() {
         error: error
     });
 
+}
+function submitTweet() {
+    var name = $("#name").val();
+    var tweet = $("#tweet").val();
+
+    var r = nameRegex.test(name);
+    if (!r) {
+        $("#err").val("Name has an error!");
+        return;
+    }
+
+    r = messageRegex.test(tweet);
+    if (!r) {
+        $("err").val("Message has an error!");
+        return;
+    }
+
+    var data = {
+        type: "put",
+        zipcode: zipcode,
+        name: name,
+        message: tweet
+    };
+    var url = 'https://project.aaomidi.com/api/put';
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+        dataType: "json",
+        success: tweet_callback,
+        error: error
+    });
 }
 function tweet_callback(json) {
     for (var i in json.messages) {

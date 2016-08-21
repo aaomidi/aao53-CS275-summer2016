@@ -10,6 +10,7 @@ var server = http.createServer(app);
 var con;
 
 var zipcodeRegex = new RegExp(/^\d{5}$/);
+var nameRegex = new RegExp(/^[\w ]{1,16}$/);
 var messageRegex = new RegExp(/^[\w ]{1,140}$/);
 
 app.use(bodyParser.json());
@@ -142,6 +143,7 @@ app.post('/api/put', function (req, res) {
 
             var zipcode = req.body.zipcode;
             var str = req.body.message;
+            var name = req.body.name;
 
             var r = zipcodeRegex.test(zipcode);
             if (!r) {
@@ -154,6 +156,14 @@ app.post('/api/put', function (req, res) {
             r = messageRegex.test(str);
             if (!r && result.success) {
                 var msg = "Message was incorrect";
+                result.success = false;
+                result.errMessage = msg;
+                console.log(msg);
+            }
+
+            r = nameRegex.test(name);
+            if (!r && result.success) {
+                var msg = "Name was incorrect";
                 result.success = false;
                 result.errMessage = msg;
                 console.log(msg);
