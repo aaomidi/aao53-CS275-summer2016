@@ -100,8 +100,7 @@ app.post('/api/get', function (req, res) {
                     sendResults(result, req, res);
                     return;
                 }
-                console.log(resp.json.results[0]);
-                var addr = resp.json.results[0].address_components[0];
+                var addr = resp.json.results[0].address_components;
                 console.log(JSON.string(addr, null, 2));
                 if (addr.types[0] === "postal_code") {
                     result.zipcode = addr.short_name;
