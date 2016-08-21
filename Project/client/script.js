@@ -18,7 +18,7 @@ function getZipcode() {
                 url: url,
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
-                data: data,
+                data: JSON.stringify(data),
                 dataType: "jsonp",
                 success: zipcode_callback,
                 error: error
