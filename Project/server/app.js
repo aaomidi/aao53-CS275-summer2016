@@ -87,7 +87,14 @@ app.post('/api/get', function (req, res) {
                         console.log("Broke!!");
                         break;
                     }
-                    result.messages.push(rows[i].message);
+                    var message = {
+                        author: "",
+                        tweet: ""
+                    };
+                    message.author = rows[i].poster;
+                    message.tweet = rows[i].message;
+
+                    result.messages.push(message);
                 }
                 sendResults(result, req, res);
             });

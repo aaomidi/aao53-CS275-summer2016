@@ -91,7 +91,10 @@ function tweet_callback(json) {
     $("#tweetRow").empty();
     for (var i in json.messages) {
         console.log(json.messages[i]);
-        $("#tweetRow").append("<div class='col-md-8 twt'>" + json.messages[i] + "</div>");
+        $("#tweetRow").append("<div class='col-md-8 twt'><span class='strong'"
+            + "Author: </span>" + json.messages[i].author +
+            "\n"
+            + json.messages[i].tweet + "</div>");
     }
 }
 function zipcode_callback(json) {
