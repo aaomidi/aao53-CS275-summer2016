@@ -103,7 +103,6 @@ app.post('/api/get', function (req, res) {
                 console.log(resp.json.results[0]);
                 console.log(JSON.stringify(resp.json.results[0].address_components[0]));
                 //console.log("\n\nLooping?" + resp.json.results[0].address_components.size());
-                var r = JSON.string(resp.json);
                 for (var i in resp.json.results[0].address_components) {
                     console.log("i:" + i);
                     var addr = resp.json.results[0].address_components[i];
