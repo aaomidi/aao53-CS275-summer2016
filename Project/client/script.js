@@ -93,7 +93,7 @@ function tweet_callback(json) {
         console.log(json.messages[i]);
         $("#tweetRow").append("<div class='col-md-8 twt'><span class='strong'>"
             + "Author: </span>" + json.messages[i].author +
-            "\n"
+            "<br>"
             + json.messages[i].tweet + "</div>");
     }
 }
