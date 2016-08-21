@@ -28,7 +28,9 @@
 
     <script src="/templates/load.js"></script>
     <script type="text/javascript">
-        load(document, "final-project");
+        load(document, "final-project", function () {
+            getZipcode();
+        });
     </script>
 </head>
 

@@ -30,7 +30,7 @@ function getZipcode() {
 }
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
-    if (json.found == false) {
+    if (!json.found) {
         console.warn("we could not find your zipcode: " + json.err);
     } else {
         zipcode = json.zipcode;
