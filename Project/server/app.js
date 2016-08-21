@@ -100,7 +100,7 @@ app.post('/api/get', function (req, res) {
                     sendResults(result, req, res);
                     return;
                 }
-                console.log("Looping?");
+                console.log("Looping?" + resp.json.results[0].address_compoents.size());
                 for (var i in resp.json.results[0].address_components) {
                     var addr = resp.json.results[0].address_components[i];
                     console.log(JSON.string(addr, null, 2));
