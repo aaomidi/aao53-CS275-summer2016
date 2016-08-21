@@ -90,7 +90,10 @@ app.post('/api/get', function (req, res) {
         case "getzip": {
             googleMapsClient.reverseGeocode({
                 latlng: [req.body.lat, req.body.long]
-            }).asPromise().then(function (resp) {
+            }, function (err, resp) {
+                if (err) {
+                    console.log(err);
+                }
                 console.log(resp.json);
             });
         }
