@@ -6,7 +6,7 @@ function getZipcode() {
             console.log(position);
             var long = position.coords.longitude;
             var lat = position.coords.latitude;
-            var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true';
+            var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true';
 
             $.ajax({
                 url: url,
