@@ -81,7 +81,9 @@ function submitTweet() {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         dataType: "json",
-        success: tweet_callback,
+        success: function (resp) {
+            loadTweets();
+        },
         error: error
     });
 }
@@ -91,7 +93,6 @@ function tweet_callback(json) {
         console.log(json.messages[i]);
         $("#tweetRow").append("<div class='col-md-8 twt'>" + json.messages[i] + "</div>");
     }
-    loadTweets();
 }
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
