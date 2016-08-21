@@ -50,7 +50,7 @@ function loadTweets() {
 function tweet_callback(json) {
     for (var i in json.messages) {
         console.log(json.messages[i]);
-        $("#tweetRow").append("<div>" + json.messages[i] + "/<div>");
+        $("#tweetRow").append("<div>" + json.messages[i] + "</div>");
     }
 }
 function zipcode_callback(json) {
