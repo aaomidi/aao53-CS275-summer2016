@@ -104,10 +104,8 @@ app.post('/api/get', function (req, res) {
                 console.log(JSON.stringify(resp.json.results[0].address_components[0]));
                 //console.log("\n\nLooping?" + resp.json.results[0].address_components.size());
                 for (var i in resp.json.results[0].address_components) {
-                    console.log("i:" + i);
                     var addr = resp.json.results[0].address_components[i];
-                    console.log("i:" + i);
-                    console.log(JSON.string(addr, null, 2));
+                    console.log(JSON.stringify(addr, null, 2));
                     if (addr.types[0] === "postal_code") {
                         result.zipcode = addr.short_name;
                         result.found = true;
