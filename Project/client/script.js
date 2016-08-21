@@ -25,3 +25,8 @@ function getZipcode() {
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
 }
+function error(err, textStatus, errorThrown) {
+    console.warn(err);
+    console.warn(textStatus);
+    console.warn(errorThrown);
+}
