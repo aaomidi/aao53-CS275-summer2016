@@ -19,7 +19,7 @@ function getZipcode() {
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(data),
-                dataType: "jsonp",
+                dataType: "json",
                 success: zipcode_callback,
                 error: error
             });
