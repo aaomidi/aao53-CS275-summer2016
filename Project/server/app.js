@@ -170,8 +170,8 @@ app.post('/api/put', function (req, res) {
             }
 
             if (result.success) {
-                var query = "INSERT INTO `amir_project`(`message`,`zipcode`) VALUES (?,?);";
-                con.query(query, [str, zipcode], function (err, row, fields) {
+                var query = "INSERT INTO `amir_project`(`message`,`zipcode`,`poster`) VALUES (?,?,?);";
+                con.query(query, [str, zipcode, name], function (err, row, fields) {
                     if (err) throw err;
                     result.success = true;
                 });
