@@ -28,6 +28,28 @@ function getZipcode() {
         console.warn("Since you didn't allow us to get your zipcode. We will be using 10000 as your default zipcode.");
     }
 }
+function loadTweets() {
+    var url = 'https://project.aaomidi.com/api/get';
+    var data = {
+        type: "get",
+        zipcode: zipcode,
+        count: 8
+    };
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+        dataType: "json",
+        success: tweet_callback,
+        error: error
+    });
+
+}
+function tweet_callback(json) {
+    console.log(JSON.stringify(json, null, 2));
+}
 function zipcode_callback(json) {
     console.log(JSON.stringify(json, null, 2));
     if (!json.found) {
@@ -35,6 +57,7 @@ function zipcode_callback(json) {
     } else {
         zipcode = json.zipcode;
     }
+    loadTweets();
 }
 function error(err, textStatus, errorThrown) {
     console.warn(err);
