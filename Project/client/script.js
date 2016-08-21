@@ -29,7 +29,7 @@ function getZipcode() {
             });
         });
     } else {
-        console.warn("Since you didn't allow us to get your zipcode. We will be using 10000 as your default zipcode.");
+        console.warn("Since you didn't allow us to get your zipcode. We will be using 12345 as your default zipcode.");
     }
 }
 function loadTweets() {
