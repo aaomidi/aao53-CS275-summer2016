@@ -95,6 +95,7 @@ app.post('/api/get', function (req, res) {
                     console.log(err);
                 }
                 console.log(resp.json);
+                console.log(resp.json.address_components[0]);
             });
         }
     }
