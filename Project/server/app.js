@@ -102,12 +102,12 @@ app.post('/api/get', function (req, res) {
                 }
                 console.log(resp.json.results[0]);
                 var addr = resp.json.results[0].address_components[0];
-                    console.log(JSON.string(addr, null, 2));
-                    if (addr.types[0] === "postal_code") {
-                        result.zipcode = addr.short_name;
-                        result.found = true;
-                        break;
-                    }
+                console.log(JSON.string(addr, null, 2));
+                if (addr.types[0] === "postal_code") {
+                    result.zipcode = addr.short_name;
+                    result.found = true;
+                    break;
+                }
                 console.log("Sending!");
                 sendResults(result, req, res);
             });
