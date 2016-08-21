@@ -1,0 +1,11 @@
+{
+  "name": "CS275-Project",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-json": "^1.0.0",
+    "express-session": "^1.14.0",
+    "mysql": "*"
+  }
+}
