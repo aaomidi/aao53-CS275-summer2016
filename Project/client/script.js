@@ -9,8 +9,8 @@ function getZipcode() {
             var lat = position.coords.latitude;
 
             var url = 'https://project.aaomidi.com/api/get';
-            var data: {
-                type:"getZip",
+            var data = {
+                type: "getZip",
                 lat: lat,
                 long: long
             };
