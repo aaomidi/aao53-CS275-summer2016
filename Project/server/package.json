@@ -2,11 +2,12 @@
   "name": "CS275-Project",
   "version": "0.0.1",
   "dependencies": {
+    "@google/maps": "^0.1.0",
     "body-parser": "*",
     "express": "*",
     "express-json": "^1.0.0",
     "express-session": "^1.14.0",
-    "geoip-lite": "^1.1.8",
+    "googlemaps": "^1.11.1",
     "mysql": "*"
   }
 }

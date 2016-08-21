@@ -3,7 +3,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var fs = require('fs');
 var mysql = require('mysql');
-
+var googleMaps = require('@google/maps');
+var googleMapsClient;
 var app = express();
 var server = http.createServer(app);
 var con;
@@ -18,6 +19,11 @@ app.use(bodyParser.urlencoded({
 
 var connectToSQL = function () {
     var obj = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+
+    googleMapsClient = googleMaps.createClient({
+        key: obj.apiKey
+    });
+
     con = mysql.createConnection(obj.mysql);
     con.connect(function (err) {
         if (err) {
@@ -81,6 +87,13 @@ app.post('/api/get', function (req, res) {
             });
             break;
         }
+        case "getzip": {
+            googleMapsClient.reverseGeocode({
+                latlng: [req.body.lat, req.body.long]
+            }).asPromise.then(function (resp) {
+                console.log(resp.json);
+            });
+        }
     }
 });
 app.post('/api/put', function (req, res) {
@@ -139,6 +152,7 @@ server.listen(4754);
 
 if (require.main === module) {
     connectToSQL();
+
 }
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ' + err);

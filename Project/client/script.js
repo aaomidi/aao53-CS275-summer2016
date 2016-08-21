@@ -4,15 +4,21 @@ function getZipcode() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             console.log(position);
+
             var long = position.coords.longitude;
             var lat = position.coords.latitude;
-            var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&sensor=true';
 
+            var url = 'https://project.aaomidi.com/api/get';
+            var data: {
+                type:"getZip",
+                lat: lat,
+                long: long
+            };
             $.ajax({
                 url: url,
                 type: "GET",
                 contentType: "application/json; charset=utf-8",
-                data: "[]",
+                data: data,
                 dataType: "jsonp",
                 success: zipcode_callback,
                 error: error
