@@ -8,6 +8,10 @@
     font-weight: bold;
 }
 
+label:after {
+    content: ':';
+}
+
 #zip {
     padding: 15px;
 }
