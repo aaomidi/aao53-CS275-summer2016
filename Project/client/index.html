@@ -21,16 +21,7 @@
     <script src="/templates/bootstrap.min.js"></script>
     <script src="script.js"></script>
     <script src="/templates/load.js"></script>
-    <script>
-        load(document, "final-project", function () {
-            getZipcode();
-            $("#tweetForm").submit(function (event) {
-                submitTweet();
-                event.preventDefault();
-                event.stopPropagation();
-            });
-        });
-    </script>
+    <script src="index.js"></script>
 </head>
 
 <body>
