@@ -23,7 +23,11 @@
     <script>
         load(document, "final-project", function () {
             getZipcode();
-            $("#tweetButton").click(submitTweet);
+            $("#tweetForm").submit(function (event) {
+                submitTweet();
+                event.preventDefault();
+                event.stopPropagation();
+            });
         });
     </script>
 </head>
@@ -37,7 +41,7 @@
         <h2>Mini Twitter</h2>
     </div>
     <div class="col-md-4">
-        <form>
+        <form id="tweetForm">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="John">
@@ -46,7 +50,7 @@
                 <label for="tweet">Tweet</label>
                 <input type="text" class="form-control" id="tweet" placeholder="This is awesome!">
             </div>
-            <button type="button" class="btn btn-default" id="tweetButton">Tweet!</button>
+            <button type="submit" class="btn btn-default">Tweet!</button>
         </form>
         <div class="col-md-8" id="zip"></div>
         <div id="err"></div>
