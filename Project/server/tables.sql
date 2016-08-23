@@ -1,4 +1,4 @@
-CREATE TABLE `amir_cs275`.`amir_project` (
+CREATE TABLE `cs275`.`project` (
   `id`      INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `poster`  VARCHAR(16)           DEFAULT NULL,
   `message` VARCHAR(140),
