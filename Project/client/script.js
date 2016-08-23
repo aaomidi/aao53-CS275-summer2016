@@ -27,6 +27,8 @@ function getZipcode() {
                 success: zipcode_callback,
                 error: error
             });
+        }, function (err){
+            zipcode = 12345;
         });
     } else {
         console.warn("Since you didn't allow us to get your zipcode. We will be using 12345 as your default zipcode.");
