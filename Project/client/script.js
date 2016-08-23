@@ -27,11 +27,11 @@ function getZipcode() {
                 success: zipcode_callback,
                 error: error
             });
-        }, function (err){
+        }, function (err) {
             zipcode = 12345;
             var r = {
                 found: false,
-                zipcode = 12345
+                zipcode: 12345
             };
             zipcode_callback(r);
         });
