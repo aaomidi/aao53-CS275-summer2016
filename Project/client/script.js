@@ -1,6 +1,6 @@
 var zipcodeRegex = /^\d{5}$/;
 var nameRegex = /^[\w .]{1,16}$/;
-var messageRegex = /^[\w .]{1,140}$/;
+var messageRegex = /^.{1,140}$/;
 
 var zipcode = 12345;
 
